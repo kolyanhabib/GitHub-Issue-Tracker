@@ -195,3 +195,88 @@ searchBtn.addEventListener("click", () => {
 
   hideLoader();
 });
+
+// Modal Logic
+
+function openModal(issue) {
+  document.getElementById("modalTitle").innerText = issue.title;
+
+  document.getElementById("modalDescription").innerText = issue.description;
+
+  document.getElementById("modalAuthor").innerText =
+    "Opened by " + issue.author;
+
+  document.getElementById("modalDate").innerText = issue.createdAt
+    ? new Date(issue.createdAt).toLocaleDateString()
+    : "";
+
+  document.getElementById("modalAssignee").innerText = issue.assignee
+    ? issue.assignee
+    : issue.author;
+
+  const status = document.getElementById("modalStatus");
+
+  status.innerText = issue.status;
+
+  status.className =
+    issue.status === "open"
+      ? "px-3 py-1 rounded-full bg-green-500 text-white"
+      : "px-3 py-1 rounded-full bg-purple-500 text-white";
+
+  const priority = document.getElementById("modalPriority");
+
+  const p = issue.priority.toUpperCase();
+
+  priority.innerText = p;
+
+  if (p === "HIGH")
+    priority.className =
+      "mt-2 inline-block px-3 py-1 rounded-full bg-red-500 text-white text-sm";
+
+  if (p === "MEDIUM")
+    priority.className =
+      "mt-2 inline-block px-3 py-1 rounded-full bg-yellow-500 text-white text-sm";
+
+  if (p === "LOW")
+    priority.className =
+      "mt-2 inline-block px-3 py-1 rounded-full bg-gray-500 text-white text-sm";
+
+  const labelsContainer = document.getElementById("modalLabels");
+
+  labelsContainer.innerHTML = "";
+
+  issue.labels.forEach((label) => {
+    const text = label.toUpperCase();
+
+    let color = "bg-gray-100 text-gray-600";
+    let icon = "fa-tag";
+
+    if (text === "BUG") {
+      color = "bg-red-100 text-red-600";
+      icon = "fa-bug";
+    }
+
+    if (text === "HELP WANTED") {
+      color = "bg-yellow-100 text-yellow-600";
+      icon = "fa-handshake";
+    }
+
+    if (text === "ENHANCEMENT") {
+      color = "bg-green-100 text-green-600";
+      icon = "fa-wand-magic-sparkles";
+    }
+
+    const span = document.createElement("span");
+
+    span.className = `px-2 py-1 text-xs rounded ${color} flex items-center gap-1`;
+
+    span.innerHTML = `
+    <i class="fa-solid ${icon}"></i>
+    ${text}
+    `;
+
+    labelsContainer.appendChild(span);
+  });
+
+  modal.showModal();
+}
