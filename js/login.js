@@ -6,7 +6,7 @@ loginBtn.addEventListener("click", function () {
   const password = document.getElementById("password").value;
 
   if (username === "admin" && password === "admin123") {
-    localStorage.setItem("loggedIn", "true"); // important line
+    localStorage.setItem("loggedIn", "true");
 
     alert("Log In Successful");
 
