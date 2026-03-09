@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issues Tracker - Log In</title>
+
+    <!-- DaisyUI and Tailwind  -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-base-200 min-h-screen flex items-center justify-center px-4">
+    <div
+      class="card w-full max-w-[520px] bg-base-100 shadow-xl px-4 sm:px-6 md:px-8 py-8"
+    >
+      <div class="flex justify-center mb-6">
+        <img src="./assets/github-logo.png" alt="GitHub Logo" />
+      </div>
+
+      <h2 class="text-center text-[#1F2937] text-lg sm:text-xl font-bold">
+        GitHub Issues Tracker
+      </h2>
+
+      <p class="text-center text-sm text-gray-500 mt-1 mb-6">
+        Sign in to manage your issues
+      </p>
+
+      <div class="flex flex-col gap-3">
+        <div>
+          <label class="block mb-2 text-base font-medium text-[#1F2937]">
+            Username
+          </label>
+
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter Username"
+            class="input input-bordered w-full mb-1.5 rounded-lg"
+          />
+
+          <span class="text-sm text-[#4A00FF]"> Default: admin </span>
+        </div>
+
+        <div>
+          <label class="block mb-2 text-base font-medium text-[#1F2937]">
+            Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter Password"
+            class="input input-bordered w-full mb-1.5 rounded-lg"
+          />
+
+          <span class="text-sm text-[#4A00FF]"> Default: admin123 </span>
+        </div>
+      </div>
+
+      <p id="errorMsg" class="text-red-500 text-sm mt-2 hidden">
+        Invalid username or password
+      </p>
+
+      <button
+        id="loginBtn"
+        class="btn bg-[#4A00FF] text-white border-none mt-4 w-full"
+      >
+        Sign In
+      </button>
+
+      <div class="divider my-6">OR</div>
+
+      <div class="bg-base-200 p-4 rounded-lg text-center text-sm">
+        <p class="text-gray-500 mb-2">Demo Credentials:</p>
+        <p><strong>Username:</strong> admin</p>
+        <p><strong>Password:</strong> admin123</p>
+      </div>
+    </div>
+
+    <script src="./js/login.js"></script>
+  </body>
+</html>
