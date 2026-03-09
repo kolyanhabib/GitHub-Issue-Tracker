@@ -148,3 +148,32 @@ ${issue.createdAt ? new Date(issue.createdAt).toLocaleDateString() : ""}
     issueContainer.appendChild(card);
   });
 }
+
+// Tab Filter Logic
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    showLoader();
+
+    tabs.forEach((btn) => {
+      btn.classList.replace("active-tab", "inactive-tab");
+    });
+
+    tab.classList.replace("inactive-tab", "active-tab");
+
+    filterIssues(tab.innerText.toLowerCase());
+
+    setTimeout(hideLoader, 200);
+  });
+});
+
+function filterIssues(filter) {
+  const base = filteredIssues.length ? filteredIssues : issues;
+
+  if (filter === "all") displayIssues(base);
+
+  if (filter === "open") displayIssues(base.filter((i) => i.status === "open"));
+
+  if (filter === "closed")
+    displayIssues(base.filter((i) => i.status === "closed"));
+}
