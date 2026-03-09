@@ -177,3 +177,21 @@ function filterIssues(filter) {
   if (filter === "closed")
     displayIssues(base.filter((i) => i.status === "closed"));
 }
+
+// Search Logic
+
+searchBtn.addEventListener("click", () => {
+  showLoader();
+
+  const text = searchInput.value.toLowerCase();
+
+  filteredIssues = issues.filter(
+    (issue) =>
+      issue.title.toLowerCase().includes(text) ||
+      issue.description.toLowerCase().includes(text),
+  );
+
+  displayIssues(filteredIssues);
+
+  hideLoader();
+});
